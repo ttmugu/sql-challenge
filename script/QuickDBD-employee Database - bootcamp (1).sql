@@ -1,12 +1,17 @@
-﻿-- Exported from QuickDBD: https://www.quickdatabasediagrams.com/
--- Link to schema: https://app.quickdatabasediagrams.com/#/d/7BfTu0
--- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
+﻿
+--drop table "dept_emp";
+--drop table "dept_managers" ;
+--drop table "titles" ;
+--drop table  "salaries";
+
+--drop TABLE "employees";
+--drop Table   "departments";
 
 
 CREATE TABLE "employees" (
     "id"  SERIAL  NOT NULL,
     "emp_no" int   NOT NULL,
-    "birt_date" date   NOT NULL,
+    "birth_date" date   NOT NULL,
     "first_name" varchar(200)   NOT NULL,
     "last_name" varchar(200)   NOT NULL,
     "gender" varchar(3)   NOT NULL,
@@ -18,7 +23,10 @@ CREATE TABLE "employees" (
 
 CREATE TABLE "departments" (
     "id"  SERIAL  NOT NULL,
-    "dept_no" varchar(10)   NOT NULL
+    "dept_no" varchar(10)   NOT NULL,
+	CONSTRAINT "pk_departments" PRIMARY KEY(
+        "dept_no"
+		)
 );
 
 CREATE TABLE "dept_emp" (
@@ -48,7 +56,7 @@ CREATE TABLE "titles" (
 CREATE TABLE "salaries" (
     "id"  SERIAL  NOT NULL,
     "emp_no" int   NOT NULL,
-    "salary" double   NOT NULL,
+    "salary" money   NOT NULL,
     "from_date" date   NOT NULL,
     "to_date" date   NULL
 );
